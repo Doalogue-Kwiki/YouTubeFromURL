@@ -1,0 +1,38 @@
+{
+	"name": "YouTube URL",
+	"version": "0.1.3",
+	"author": [
+		"[http://kwiki.co.il Kwiki]",
+		"[[mw:user:HagaiAsaban|Hagai Asaban]]",
+		"[[mw:user:Yacohen|Yacohen]]"
+	],
+	"url": "mw:Extension:YouTubeUrl",
+	"descriptionmsg": "MaterialFAB-desc",
+	"license-name": "GPL v2",
+	"type": "Tag extension",
+	"AutoloadClasses": {
+		"YouTubeUrlHooks": "YouTubeUrl.hooks.php"
+	},
+	"ExtensionMessagesFiles": {
+	},
+	"Hooks": {
+		"ParserFirstCallInit": [
+			"YouTubeUrl::setHooks"
+		]
+	},
+	"MessagesDirs": {
+	},
+	"ResourceModules": {
+		"ext.YouTubeUrl": {
+			"styles": [
+                "modules/ext.YouTubeUrl.css"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "YouTubeUrl"
+	},
+	"SpecialPages": {},
+	"manifest_version": 1
+}

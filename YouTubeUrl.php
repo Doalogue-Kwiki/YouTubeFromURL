@@ -22,6 +22,12 @@ $wgExtensionCredits['parserhook'][] = array(
         'author' => 'Kwiki. based on [[mw:Extension:GoogleImage|GoogleImage]] by Bertrand Gorge',
         'url' => 'http://www.kwiki.co.il'
 );
+$wgResourceModules['ext.YouTubeUrl'] = array(
+	'localBasePath' => __DIR__ . '/modules',
+	'remoteExtPath' => 'YouTubeUrl/modules',
+	'styles' => 'ext.YouTubeUrl.css'
+);
+
 
 function wfYTU()
 {
@@ -45,7 +51,13 @@ function renderYouTube($input)
 	else
 		$fileId = $input;
 
-	$output = '<iframe src="https://www.youtube.com/embed/'.htmlspecialchars($fileId).'" frameborder="0" allowfullscreen></iframe>';
-
+	$output = '<div class="videoWrapper"><iframe src="https://www.youtube.com/embed/'.htmlspecialchars($fileId).'" frameborder="0" allowfullscreen></iframe></div>';
     return $output;
+}
+
+$wgHooks['BeforePageDisplay'][] = 'wfYTUBeforePageDisplay';
+
+function wfYTUBeforePageDisplay(&$out){
+	$out->addModules( 'ext.YouTubeUrl' );
+	return true;
 }
